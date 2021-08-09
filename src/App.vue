@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <FirstScreen />
+    <AddTodo @add-todo="addTodo" />
     <TodoList :todos="todos" @delete-todo="deleteTodo" />
   </div>
 </template>
@@ -8,6 +9,7 @@
 <script>
 import TodoList from "./components/TodoList.vue";
 import FirstScreen from "./components/FirstScreen.vue";
+import AddTodo from "./components/AddTodo.vue";
 
 export default {
   name: "App",
@@ -28,10 +30,14 @@ export default {
   components: {
     TodoList,
     FirstScreen,
+    AddTodo,
   },
   methods: {
     deleteTodo(index) {
       this.todos.splice(index, 1);
+    },
+    addTodo(inputValue) {
+      this.todos.push(inputValue);
     },
   },
 };
